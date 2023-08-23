@@ -16,7 +16,7 @@ def Synth(
     w = []
     for i in range(length):
         s = i/SampleRate
-        r = vol * envelop(s) * voice( glide(s) * freq ) 
+        r = vol * envelop(s) * voice( glide(s) * freq * s ) 
         w.append(r)
     return w
 
