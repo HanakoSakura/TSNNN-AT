@@ -19,3 +19,10 @@ def output(file_name:str,w:list[int],SampleRate=64000):
         bytes((ctypes.c_int16 * len(w))(*w))\
     )
     f.close()
+
+def correct(w:list[float],power:int=16384)->list[int]:
+    '''Change Float WveTrack to Int WaveTrack'''
+    tmp = []
+    for i in w:
+        tmp.append(int(power*i))
+    return tmp
