@@ -12,6 +12,7 @@ def SinWave(x:float):
     return math.sin(2*math.pi*x)
 
 def draw(w:list[float]):
+    plt.figure(figsize=(8,8))
     plt.plot(range(len(w)),w)
     plt.show()
 
@@ -24,13 +25,16 @@ def NoiseMaker(length:int)->list[float]:
 
 # First order RC low-pass filter
 class FO_RC_LPF:
-    def __init__(self,A:float) -> None:
+    def __init__(self,A:float=0.0) -> None:
         self.A = A
         self.L = 0.0
     def filter(self,N:float):
         self.L = self.A * N + (1.0 - self.A) * self.L
         return self.L
+    def FL(self,T:float):
+        return self.A/(2*math.pi*T)
     
+
 
 
 if __name__ == '__main__' :
